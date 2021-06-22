@@ -5,8 +5,18 @@ class ApplicationController < Sinatra::Base
   end
 
   # code actions here!
-  get 'recipes' do 
+   get '/' do
+    # redirect to homepage/index
+    redirect to '/recipes'
+  end
+
+  get '/recipes' do # index action allowing view to access all recipes thru instance variable @recipes
     @recipes = Recipe.all
-  end 
+    erb :index
+  end
+
+  get '/recipes/new' do # loads form to create new recipe
+    erb :new
+  end
 
 end
